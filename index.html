@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MODA URBANA | Minimalismo Contemporáneo</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+</head>
+
+<body>
+    <!-- Loader animado -->
+    <div id="loader"
+        style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:rgba(255,255,255,0.98);display:flex;align-items:center;justify-content:center;transition:opacity 0.5s;">
+        <div class="spinner"></div>
+    </div>
+    <header>
+        <nav class="navbar">
+            <div class="logo">MODA<span>URBANA</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#coleccion">Colección</a></li>
+                <li><a href="#blog">Inspiración</a></li>
+                <li><a href="#sobre-nosotros">Filosofía</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i> <span
+                            class="cart-count">0</span></a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Abrir menú">
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+                <span class="toggle-line"></span>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <img src="https://www.elattelier.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2019/07/PORTADA-TIENDAS-COOL.png.webp"
+                    alt="Imagen principal"
+                    style="max-width: 100%; height: auto; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 8px 32px rgba(44,62,80,0.10);">
+                <h1><span id="typed-text"></span><span class="typed-cursor">|</span></h1>
+                <p>Diseños atemporales para una vida consciente</p>
+                <a href="#coleccion" class="cta-button">Explorar Colección</a>
+            </div>
+            <!-- Fondo animado de partículas -->
+            <canvas id="hero-particles"></canvas>
+        </section>
+        <section id="coleccion" class="section">
+            <h2>Colección Esencial</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todo</button>
+                <button class="filter-btn" data-filter="mujer">Mujer</button>
+                <button class="filter-btn" data-filter="hombre">Hombre</button>
+                <button class="filter-btn" data-filter="sostenible">Sostenible</button>
+            </div>
+            <div class="product-grid">
+                <article class="product-card" data-category="mujer">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS3FgTaUvJZ-yVXnd10OZD-agybLgrkZWqHVaSUkBHGeySRKwj__8yKJilNVOOnxkf2P_ZFchWF-AyTt1RvtItW32aNE8F0VAz0553jia5oioAs25DAnV94"
+                            alt="Vestido minimalista" loading="lazy">
+                        <button class="add-to-cart">+</button>
+                    </div>
+                    <h3>Vestido Essential</h3>
+                    <p class="price">€89</p>
+                </article>
+                <article class="product-card" data-category="hombre">
+                    <div class="product-img">
+                        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_610213-MLA76986415479_062024-F.webp"
+                            alt="Camisa orgánica" loading="lazy">
+                        <button class="add-to-cart">+</button>
+                    </div>
+                    <h3>Camisa Clásica</h3>
+                    <p class="price">€65</p>
+                </article>
+                <article class="product-card" data-category="sostenible">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR4AG8KLT1WKWoQRCw7via4i2livZ9mZl98P7L0nrasCop7_AFaImirdJs4yJT9287sKhjq5mbg1BCSb68GkMgLvyYwT2cPC5Ivi_s8a3YnI-u0I5betbhc"
+                            alt="Pantalón sostenible" loading="lazy">
+                        <button class="add-to-cart">+</button>
+                    </div>
+                    <h3>Pantalón Eco</h3>
+                    <p class="price">€75</p>
+                </article>
+                <article class="product-card" data-category="mujer sostenible">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSX9FY2S_z0ccNZeWkb3cfyPHAlei4yOVQZoRY7NVBJPbjNsw7uOiHjhFg9ffmfXvb6Drn8mcB9vfA00ehrPG-pS16xH6ClliBJARCusUT626pr2aL_K8zCj5M"
+                            alt="Chaqueta reciclada" loading="lazy">
+                        <button class="add-to-cart">+</button>
+                    </div>
+                    <h3>Chaqueta Circular</h3>
+                    <p class="price">€120</p>
+                </article>
+            </div>
+        </section>
+        <section id="blog" class="section">
+            <h2>Inspiración Minimalista</h2>
+            <div class="blog-list">
+                <article>
+                    <img src="https://www.infobae.com/resizer/v2/https%3A%2F%2Fs3.amazonaws.com%2Farc-wordpress-client-uploads%2Finfobae-wp%2Fwp-content%2Fuploads%2F2017%2F05%2F05114205%2FiStock-475414937.jpg?auth=50812074eb76199986a3394175d5e22fec2aa3ee2140a0e1ec58f533c91820cf&smart=true&width=992&height=558&quality=85"
+                        alt="Armario cápsula" loading="lazy">
+                    <div class="blog-content">
+                        <h3>El Arte del Armario Cápsula</h3>
+                        <p class="blog-summary">Descubre cómo crear un guardarropa minimalista con solo 20 prendas
+                            esenciales. El armario cápsula es una tendencia que busca simplificar la vida, reducir el
+                            consumo y apostar por la calidad sobre la cantidad...</p>
+                        <div class="blog-full" style="display:none;">
+                            <p>Al elegir prendas versátiles y atemporales, puedes combinar fácilmente y sentirte bien
+                                cada día.<br><br>
+                                Además, un armario cápsula te ayuda a ahorrar tiempo y dinero, ya que evitas compras
+                                impulsivas y te enfocas en lo que realmente necesitas. ¿Te animas a probarlo? Aquí te
+                                damos consejos, ejemplos y una guía paso a paso para empezar tu propio armario cápsula y
+                                transformar tu estilo de vida.</p>
+                        </div>
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article>
+                    <img src="http://serif.com.ar/qiarg/wp-content/uploads/2021/03/slow-fashion-1140x570.png"
+                        alt="Slow fashion" loading="lazy">
+                    <div class="blog-content">
+                        <h3>Slow Fashion Movement</h3>
+                        <p class="blog-summary">Por qué menos es más en la moda contemporánea y cómo unirse al
+                            movimiento. El slow fashion promueve la producción ética, el consumo responsable y el
+                            respeto por el medio ambiente...</p>
+                        <div class="blog-full" style="display:none;">
+                            <p>Al elegir marcas y prendas sostenibles, contribuyes a un mundo mejor y a una moda más
+                                consciente.<br><br>
+                                Descubre historias inspiradoras, marcas referentes y consejos para adoptar el slow
+                                fashion en tu día a día. ¡Únete al cambio y sé parte de una comunidad que valora la
+                                calidad, la ética y la sostenibilidad!</p>
+                        </div>
+                        <a href="#" class="read-more">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section id="sobre-nosotros" class="section philosophy">
+            <h2>Nuestra Filosofía</h2>
+            <div class="philosophy-content">
+                <div class="philosophy-text">
+                    <h3>Menos es Más</h3>
+                    <p>Creemos en la belleza de la simplicidad. Cada pieza está diseñada para trascender temporadas,
+                        creada con materiales sostenibles y fabricada éticamente.</p>
+                    <ul class="values-list">
+                        <li><i class="fas fa-leaf"></i> Materiales orgánicos y reciclados</li>
+                        <li><i class="fas fa-heart"></i> Diseño atemporal</li>
+                        <li><i class="fas fa-globe-europe"></i> Producción local</li>
+                        <li><i class="fas fa-recycle"></i> Programa de reciclaje</li>
+                    </ul>
+                </div>
+                <div class="philosophy-img">
+                    <img src="https://estaticosgn-cdn.deia.eus/clip/6fdae601-31c8-459e-bc84-a15d8927fcaf_16-9-aspect-ratio_default_0.jpg"
+                        alt="Nuestro taller" loading="lazy">
+                </div>
+            </div>
+        </section>
+        <section id="servicios" class="section">
+            <h2>Servicios</h2>
+            <img src="https://3dlook.ai/wp-content/uploads/2023/03/fashion-ecommerce-in-2023_-the-retailers-handbook-_v1-1.jpg"
+                alt="Nuestros servicios" style="width:100%;max-width:350px;display:block;margin:0 auto 16px;">
+            <ul class="services-list">
+                <li>Envío rápido a todo el país</li>
+                <li>Atención personalizada</li>
+                <li>Devoluciones sencillas</li>
+                <li>Programa de puntos para clientes</li>
+                <li>Asesoría de imagen virtual</li>
+                <li>Personalización de prendas (bordados, parches, estampados)</li>
+                <li>Prendas con tecnología antiarrugas y tejidos inteligentes</li>
+                <li>Ropa con materiales reciclados y ecológicos</li>
+                <li>Acceso a colecciones cápsula exclusivas</li>
+                <li>Realidad aumentada para probarte ropa online</li>
+            </ul>
+        </section>
+        <section class="testimonials">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <div class="testimonial">
+                    <p>"La calidad y el diseño superaron mis expectativas. Cada pieza es versátil y atemporal."</p>
+                    <div class="author">- Ana M.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Finalmente una marca que entiende que menos es más. Mi guardarropa nunca ha sido tan coherente."
+                    </p>
+                    <div class="author">- Javier R.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"El servicio al cliente es excelente y la entrega fue rapidísima. ¡Repetiré!"</p>
+                    <div class="author">- Laura S.</div>
+                </div>
+                <button class="testimonial-arrow left" aria-label="Anterior">&#10094;</button>
+                <button class="testimonial-arrow right" aria-label="Siguiente">&#10095;</button>
+            </div>
+        </section>
+        <!-- Botón ir arriba -->
+        <button id="scrollTopBtn" aria-label="Ir arriba"
+            style="display:none;position:fixed;bottom:32px;right:32px;z-index:1000;background:linear-gradient(90deg,#3498db,#8e44ad);color:#fff;border:none;border-radius:50%;width:48px;height:48px;box-shadow:0 2px 8px rgba(44,62,80,0.15);font-size:1.5rem;cursor:pointer;transition:background 0.3s,transform 0.3s;"><i
+                class="fas fa-arrow-up"></i></button>
+        <section class="stats section" style="text-align:center;">
+            <h2>Nuestros logros</h2>
+            <div class="stats-grid" style="display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;">
+                <div class="stat">
+                    <span class="stat-number" data-count="1000">0</span>
+                    <span class="stat-label">Clientes satisfechos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="250">0</span>
+                    <span class="stat-label">Productos vendidos</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+            </div>
+        </section>
+        <!-- Aviso de cookies -->
+        <div id="cookie-banner"
+            style="display:none;position:fixed;bottom:0;left:0;width:100%;background:rgba(44,62,80,0.97);color:#fff;padding:1.2rem 2rem;z-index:9999;box-shadow:0 -2px 12px rgba(44,62,80,0.10);text-align:center;">
+            <span>Este sitio utiliza cookies para mejorar tu experiencia. <a href="#"
+                    style="color:#ffd700;text-decoration:underline;">Saber más</a></span>
+            <button id="accept-cookies"
+                style="margin-left:2rem;padding:0.5rem 1.5rem;border:none;border-radius:30px;background:linear-gradient(90deg,#3498db,#8e44ad);color:#fff;font-weight:600;cursor:pointer;">Aceptar</button>
+        </div>
+        <!-- Sección de contacto -->
+        <section id="contacto" class="section">
+            <h2>Contacto</h2>
+            <div class="contact-container">
+                <form id="contact-form">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu email" required>
+                    <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje" required></textarea>
+                    <button type="submit">Enviar mensaje</button>
+                    <div id="form-msg" style="margin-top:1rem;"></div>
+                </form>
+                <div class="contact-info">
+                    <h3>¿Tienes dudas?</h3>
+                    <p><i class="fas fa-envelope"></i> contacto@modaurbana.com</p>
+                    <p><i class="fas fa-phone"></i> +34 600 123 456</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MODA<span>URBANA</span></div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Comprar</h4>
+                    <a href="#">Mujer</a>
+                    <a href="#">Hombre</a>
+                    <a href="#">Colecciones</a>
+                    <a href="#">Ofertas</a>
+                </div>
+                <div class="link-group">
+                    <h4>Empresa</h4>
+                    <a href="#">Nuestra historia</a>
+                    <a href="#">Sostenibilidad</a>
+                    <a href="#">Trabaja con nosotros</a>
+                </div>
+                <div class="link-group">
+                    <h4>Ayuda</h4>
+                    <a href="#">FAQ</a>
+                    <a href="#">Envíos y devoluciones</a>
+                    <a href="#">Guía de tallas</a>
+                </div>
+            </div> <!-- .footer-links -->
+        </div> <!-- .footer-content -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 MODA URBANA. Todos los derechos reservados.</p>
+            <div class="legal-links">
+                <a href="#">Política de privacidad</a>
+                <a href="#">Términos y condiciones</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

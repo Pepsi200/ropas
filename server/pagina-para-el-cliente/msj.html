@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mensajes de Contacto - MODA URBANA</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 16px #0001;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        th {
+            background: #3498db;
+            color: #fff;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .export-btn {
+            display: block;
+            margin: 1.5rem auto 0 auto;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .export-btn:hover {
+            background: #217dbb;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0.5rem;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Mensajes de Contacto</h1>
+        <button class="export-btn" onclick="exportarCSV()">Descargar CSV</button>
+        <table id="tabla-mensajes">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Mensaje</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mensajes aquí -->
+            </tbody>
+        </table>
+        <div id="sin-mensajes" style="display:none;text-align:center;color:#888;margin-top:2rem;">No hay mensajes aún.
+        </div>
+    </div>
+    <script>
+        function escapeCSV(val) {
+            if (!val) return '';
+            return '"' + String(val).replace(/"/g, '""').replace(/\n/g, ' ') + '"';
+        }
+        function exportarCSV() {
+            const filas = Array.from(document.querySelectorAll('#tabla-mensajes tbody tr'));
+            let csv = 'Nombre,Email,Mensaje\r\n';
+            filas.forEach(tr => {
+                const tds = tr.querySelectorAll('td');
+                csv += escapeCSV(tds[0].textContent) + ',' + escapeCSV(tds[1].textContent) + ',' + escapeCSV(tds[2].textContent) + '\r\n';
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'mensajes_contacto.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        function eliminarMensaje(idx) {
+            if (!confirm('¿Seguro que quieres eliminar este mensaje?')) return;
+            fetch('http://localhost:5000/mensajes/' + idx, { method: 'DELETE' })
+                .then(res => res.json())
+                .then(() => location.reload())
+                .catch(() => alert('No se pudo eliminar el mensaje.'));
+        }
+        fetch('http://localhost:5000/mensajes')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.querySelector('#tabla-mensajes tbody');
+                const sinMensajes = document.getElementById('sin-mensajes');
+                tbody.innerHTML = '';
+                if (!data || data.length === 0) {
+                    sinMensajes.style.display = 'block';
+                    return;
+                }
+                sinMensajes.style.display = 'none';
+                data.forEach((msg, idx) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `<td>${msg.nombre}</td><td>${msg.email}</td><td>${msg.mensaje.replace(/\n/g, '<br>')}</td><td><button onclick="eliminarMensaje(${idx})" style="background:#e74c3c;color:#fff;border:none;padding:0.4rem 1rem;border-radius:4px;cursor:pointer;">Eliminar</button></td>`;
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(() => {
+                document.getElementById('sin-mensajes').textContent = 'No se pudo cargar la lista de mensajes.';
+                document.getElementById('sin-mensajes').style.display = 'block';
+            });
+    </script>
+</body>
+
+</html>
